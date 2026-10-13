@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title data-t="meta_title">Sol Ilg | Experiencia Somática y acompañamiento del dolor crónico</title>
 <meta name="description" data-ta="content:meta_desc" content="Acompañamiento somático online para regular el sistema nervioso y vivir con más libertad el dolor crónico. Sesiones en español, con encuentro introductorio gratuito.">
+<link rel="canonical" href="https://www.solilg.com/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.solilg.com/">
+<meta property="og:title" data-ta="content:meta_title" content="Sol Ilg | Experiencia Somática y acompañamiento del dolor crónico">
+<meta property="og:description" data-ta="content:meta_desc" content="Acompañamiento somático online para regular el sistema nervioso y vivir con más libertad el dolor crónico. Sesiones en español, con encuentro introductorio gratuito.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Lora:ital,wght@0,400;0,500;1,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
@@ -117,7 +122,7 @@
   .nav a[aria-current="true"] { border-bottom-color: var(--orange); }
   .head-tools { display: flex; align-items: center; gap: 0.9rem; }
   .wa-link { display: inline-flex; align-items: center; gap: 0.45rem; color: var(--charcoal); text-decoration: none; font-size: 0.92rem; font-weight: 600; padding: 0.35rem 0.1rem; }
-  .wa-link svg { width: 1.6rem; height: 1.6rem; flex: none; }
+  .wa-link svg { width: 2.4rem; height: 2.4rem; flex: none; filter: drop-shadow(0 2px 6px rgba(37, 211, 102, 0.35)); }
   .wa-link:hover { color: var(--rose-deep); }
   .wa-text { display: none; }
   .lang { display: inline-flex; border: 1px solid var(--clay); border-radius: 3px; overflow: hidden; }
@@ -128,7 +133,13 @@
   .menu-btn span { display: block; height: 2px; background: var(--charcoal); }
   .site-head.nav-open .nav { display: flex; flex-direction: column; gap: 0.4rem; position: absolute; left: 0; right: 0; top: 100%; background: var(--bar); border-bottom: 1px solid var(--line); padding: 1rem clamp(1.25rem, 4vw, 2.5rem) 1.5rem; }
   .site-head.nav-open .nav a { padding: 0.55rem 0; font-size: 1.05rem; }
-  .float-cta { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); z-index: 40; max-width: calc(100% - 2rem); box-shadow: 0 8px 28px rgba(37, 35, 33, 0.22); }
+  .float-cta { position: fixed; left: 50%; bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); z-index: 40; max-width: calc(100% - 2rem); padding: 1rem 1.7rem; font-weight: 600; box-shadow: 0 10px 30px rgba(37, 35, 33, 0.28); opacity: 0; visibility: hidden; pointer-events: none; transform: translate(-50%, 28px); transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s, background-color 0.2s ease; }
+  .float-cta.show { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, 0); animation: nudge 5s ease-in-out 1.5s infinite; }
+  @keyframes nudge {
+    0%, 78%, 100% { box-shadow: 0 10px 30px rgba(37, 35, 33, 0.28), 0 0 0 0 rgba(243, 168, 120, 0); }
+    90% { box-shadow: 0 10px 30px rgba(37, 35, 33, 0.28), 0 0 0 14px rgba(243, 168, 120, 0.38); }
+  }
+  .hero .btn-primary { padding: 1.1rem 2.1rem; font-size: 1.05rem; font-weight: 600; box-shadow: 0 8px 24px rgba(243, 168, 120, 0.45); }
 
   /* Hero */
   .hero { position: relative; overflow: clip; padding: clamp(2.5rem, 6vw, 5rem) 0 clamp(3rem, 7vw, 6rem); }
@@ -287,6 +298,8 @@
     .hero-grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(2.5rem, 5vw, 5rem); }
     .cols3 { grid-template-columns: repeat(3, 1fr); gap: 0; }
     .svc-grid { grid-template-columns: repeat(2, 1fr); }
+    .float-cta { left: auto; right: 2rem; bottom: calc(2rem + env(safe-area-inset-bottom, 0px)); transform: translateY(28px); }
+    .float-cta.show { transform: translateY(0); }
     .ill.ill-fill { display: block; }
     .svc-intro { grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: clamp(3rem, 6vw, 6rem); align-items: start; }
     .sub-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(3rem, 6vw, 6rem); row-gap: 2.75rem; }
@@ -312,7 +325,6 @@
     .nav { display: flex; gap: 1.2rem; align-items: center; }
     .menu-btn { display: none; }
     .head-cta { display: inline-block; }
-    .float-cta { display: none; }
     .brand-sub { display: none; }
   }
   @media (min-width: 96rem) {
@@ -327,6 +339,7 @@
   }
   @media (prefers-reduced-motion: reduce) {
     .waves { animation: none; }
+    .float-cta, .float-cta.show { animation: none; transition: none; }
     html { scroll-behavior: auto; }
   }
 </style>
@@ -350,7 +363,7 @@
     </nav>
     <div class="head-tools">
       <a class="wa-link" href="https://wa.me/541159581386" target="_blank" rel="noopener" data-ta="aria-label:wa_aria" aria-label="Escribime por WhatsApp">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 8.5c.3 2.6 3.9 6.2 6.5 6.5l1.2-1.4-2-1-.9.8c-.9-.3-2.2-1.6-2.5-2.5l.8-.9-1-2L9 8.5z" fill="currentColor"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="12" fill="#25D366"/><g transform="translate(4.3 4.3) scale(0.64)"><path d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3z" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"/><path d="M9 8.5c.3 2.6 3.9 6.2 6.5 6.5l1.2-1.4-2-1-.9.8c-.9-.3-2.2-1.6-2.5-2.5l.8-.9-1-2L9 8.5z" fill="#fff"/></g></svg>
         <span class="wa-text">WhatsApp</span>
       </a>
       <div class="lang" role="group" data-ta="aria-label:lang_label" aria-label="Idioma">
@@ -664,6 +677,22 @@
 <a class="btn btn-primary float-cta" href="#contacto" data-t="cta_book">Agendar encuentro gratuito</a>
 
 <script>
+/* ---- Google Analytics 4 ----
+   Reemplazar G-XXXXXXXXXX por tu ID de medición (Admin > Flujos de datos > tu flujo web). */
+const GA_ID = "G-XXXXXXXXXX";
+(function () {
+  if (!/^G-[A-Z0-9]{6,}$/.test(GA_ID) || GA_ID === "G-XXXXXXXXXX") return;
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () { window.dataLayer.push(arguments); };
+  window.gtag("js", new Date());
+  window.gtag("config", GA_ID);
+  var s = document.createElement("script");
+  s.async = true;
+  s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+  document.head.appendChild(s);
+})();
+function track(name, params) { if (window.gtag) { window.gtag("event", name, params || {}); } }
+
 /* ---- Configuración de cursos ----
    open: false = botón "Consultar" (contorno). open: true = botón "Inscribirme" (relleno).
    url: reemplazar por el enlace de Google Forms de cada propuesta (o dejar #contacto). */
@@ -721,6 +750,7 @@ document.querySelectorAll(".lang-btn").forEach(function (b) {
     const l = b.getAttribute("data-lang");
     try { localStorage.setItem("sol-lang", l); } catch (e) {}
     apply(l);
+    track("language_change", { language: l });
   });
 });
 
@@ -770,11 +800,28 @@ form.addEventListener("submit", function (e) {
   fetch("https://api.web3forms.com/submit", { method: "POST", body: new FormData(form) })
     .then(function (r) { return r.json(); })
     .then(function (j) {
-      if (j && j.success) { form.reset(); setStatus("f_ok", "status-ok"); }
+      if (j && j.success) { form.reset(); setStatus("f_ok", "status-ok"); track("generate_lead", { method: "contact_form" }); }
       else { setStatus("f_err", "status-err"); }
     })
     .catch(function () { setStatus("f_err", "status-err"); })
     .then(function () { formBtn.disabled = false; });
+});
+
+const floatCta = document.querySelector(".float-cta");
+const contactSec = document.getElementById("contacto");
+let pastHero = false, inContact = false;
+function updateFloat() { floatCta.classList.toggle("show", pastHero && !inContact); }
+window.addEventListener("scroll", function () { pastHero = window.scrollY > 480; updateFloat(); }, { passive: true });
+if ("IntersectionObserver" in window) {
+  new IntersectionObserver(function (es) { inContact = es[0].isIntersecting; updateFloat(); }, { rootMargin: "0px 0px -20% 0px" }).observe(contactSec);
+}
+updateFloat();
+
+document.querySelectorAll('a[href^="https://wa.me"]').forEach(function (a) {
+  a.addEventListener("click", function () { track("whatsapp_click", { link_location: a.closest("header") ? "header" : "contact" }); });
+});
+document.querySelectorAll('a.btn[href="#contacto"]').forEach(function (a) {
+  a.addEventListener("click", function () { track("cta_click", { link_text: a.textContent.trim() }); });
 });
 
 apply(pickLang());
